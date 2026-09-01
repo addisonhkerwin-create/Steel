@@ -1,12 +1,21 @@
+@font-face {
+  font-family: "Begok";
+  src: url("./font/Begok v15_2015___free.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --ink: #28102f;
   --paper: rgba(255, 249, 239, 0.86);
   --hot-pink: #ff2b9b;
-  --acid: #d8ff38;
+  --acid: #d46dba;
   --violet: #7b35ff;
-  --cyan: #29e7ff;
-  --orange: #ff743d;
+  --cyan: #ffb9f0;
+  --orange: #c83dff;
   --shadow: 9px 9px 0 rgba(40, 16, 47, 0.9);
+  --display-font: "Begok", "Bodoni Moda", Georgia, serif;
 }
 
 * {
@@ -22,26 +31,12 @@ body {
   margin: 0;
   overflow-x: hidden;
   color: var(--ink);
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255, 43, 155, 0.95), transparent 33%),
-    radial-gradient(circle at 84% 18%, rgba(41, 231, 255, 0.9), transparent 30%),
-    radial-gradient(circle at 76% 84%, rgba(216, 255, 56, 0.95), transparent 34%),
-    radial-gradient(circle at 20% 82%, rgba(123, 53, 255, 0.9), transparent 32%),
-    #ff8c61;
-  background-size: 140% 140%;
+  background: #f9dfe9;
   font-family: "DM Mono", monospace;
-  animation: tieDye 15s ease-in-out infinite alternate;
 }
 
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.35;
-  background: conic-gradient(from 90deg at 50% 50%, transparent, #fff 12%, transparent 26%, #ffef63 40%, transparent 56%, #ff2b9b 74%, transparent);
-  filter: blur(70px);
-  animation: slowSpin 24s linear infinite;
+  content: none;
 }
 
 .noise {
@@ -68,22 +63,24 @@ main {
 }
 
 .kicker {
-  display: inline-block;
+  display: block;
   margin: 0 0 20px;
-  padding: 7px 12px;
-  border: 2px solid var(--ink);
-  border-radius: 999px;
-  background: var(--acid);
-  box-shadow: 4px 4px 0 var(--ink);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ink);
   font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  transform: rotate(-1.5deg);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transform: none;
 }
 
 h1 {
   margin: 0;
-  font-family: "Bodoni Moda", Georgia, serif;
+  font-family: var(--display-font);
   font-size: clamp(3rem, 8.6vw, 7.4rem);
   font-weight: 900;
   line-height: 0.85;
@@ -99,7 +96,8 @@ h1 em {
   font-size: 0.48em;
   letter-spacing: -0.045em;
   text-shadow: 3px 3px 0 var(--ink);
-  transform: rotate(-1deg);
+  transform: none;
+  font-style: normal;
 }
 
 .instructions {
@@ -110,20 +108,20 @@ h1 em {
 }
 
 .control-deck {
-  position: sticky;
-  top: 14px;
-  z-index: 10;
+  position: static;
+  top: auto;
+  z-index: 1;
   display: grid;
   grid-template-columns: auto minmax(230px, 1fr) auto auto;
   gap: 12px;
   align-items: center;
   margin: 0 auto 13px;
-  padding: 12px;
-  border: 3px solid var(--ink);
-  border-radius: 18px;
-  background: rgba(255, 249, 239, 0.9);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(16px);
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 button,
@@ -132,52 +130,51 @@ input {
 }
 
 .control {
-  min-height: 48px;
-  padding: 10px 15px;
-  border: 2px solid var(--ink);
-  border-radius: 10px;
+  min-height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--ink);
+  border-radius: 0;
   color: var(--ink);
+  background: transparent;
   font-size: 0.76rem;
   font-weight: 500;
   cursor: pointer;
-  box-shadow: 3px 3px 0 var(--ink);
-  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+  box-shadow: none;
+  transition: opacity 150ms ease;
 }
 
 .control:hover {
-  transform: translate(-2px, -2px) rotate(-1deg);
-  box-shadow: 5px 5px 0 var(--ink);
-  filter: saturate(1.25);
+  transform: none;
+  box-shadow: none;
+  filter: none;
+  opacity: 0.75;
 }
 
 .control:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--ink);
+  transform: none;
+  box-shadow: none;
 }
 
 .control:focus-visible,
 input:focus-visible {
-  outline: 4px solid var(--cyan);
-  outline-offset: 3px;
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
 }
 
-.control-pink {
-  background: var(--hot-pink);
-  color: white;
-}
-
-.control-chaos {
-  background: var(--acid);
+.control-pink,
+.control-chaos,
+.control-reset {
+  background: transparent;
+  color: var(--ink);
 }
 
 .control-chaos[aria-pressed="true"] {
-  color: white;
-  background: var(--violet);
-  animation: buttonPanic 0.3s steps(2, end) infinite;
-}
-
-.control-reset {
-  background: #fff;
+  color: var(--ink);
+  background: transparent;
+  animation: none;
 }
 
 .slider-control {
@@ -221,9 +218,9 @@ input[type="range"] {
 .status {
   width: fit-content;
   margin: 22px auto 10px;
-  padding: 5px 10px;
-  color: white;
-  background: var(--ink);
+  padding: 0;
+  color: var(--ink);
+  background: transparent;
   font-size: 0.68rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -232,35 +229,23 @@ input[type="range"] {
 .poem-card {
   position: relative;
   padding: clamp(30px, 7vw, 86px);
-  border: 3px solid var(--ink);
-  border-radius: 3px 32px 3px 32px;
-  background: var(--paper);
-  box-shadow: 14px 14px 0 rgba(40, 16, 47, 0.88);
-  backdrop-filter: blur(20px);
-}
-
-.poem-card::before {
-  content: "THE TEXT IS NOT STABLE";
-  position: absolute;
-  top: 18px;
-  right: -35px;
-  padding: 7px 46px;
-  color: white;
-  background: var(--hot-pink);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  transform: rotate(7deg);
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .poem {
-  font-family: "Bodoni Moda", Georgia, serif;
-  font-size: clamp(1.16rem, 2.15vw, 1.56rem);
-  font-weight: 500;
-  line-height: 1.66;
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(1.14rem, 2vw, 1.46rem);
+  font-weight: 400;
+  line-height: 1.95;
+  letter-spacing: 0.01em;
 }
 
 .poem p {
-  margin: 0 0 1.45em;
+  margin: 0 0 1.9em;
 }
 
 .poem p:last-child {
@@ -292,6 +277,7 @@ input[type="range"] {
 footer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px 20px;
   margin: 34px 12px 0;
   font-size: 0.65rem;
@@ -299,6 +285,10 @@ footer {
 
 footer p {
   margin: 0;
+}
+
+footer .skyline-photo {
+  order: 0;
 }
 
 .legend {
@@ -314,6 +304,15 @@ footer p {
 
 .noun-swatch {
   border-bottom: 2px dotted var(--violet);
+}
+
+.skyline-photo {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin-right: 18px;
+  border: 3px solid #ff2b9b;
+  background: #fff;
 }
 
 .credit {
@@ -358,24 +357,42 @@ footer p {
 .sticker-star {
   top: 11%;
   right: 4vw;
-  color: var(--acid);
-  font-size: 7rem;
-  text-shadow: 3px 3px 0 var(--ink);
+  width: 90px;
+  height: 90px;
   animation: pulse 1.8s ease-in-out infinite alternate;
 }
 
+.sticker-star img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 0 rgba(40, 16, 47, 0.18));
+}
+
 .sticker-disc {
-  bottom: 6%;
+  bottom: 3%;
   left: 2vw;
-  font-size: 4rem;
+  width: 140px;
+  height: 140px;
   animation: slowSpin 7s linear infinite;
 }
 
 .sticker-drink {
   right: 2vw;
-  bottom: 15%;
-  font-size: 4.5rem;
+  bottom: 12%;
+  width: 160px;
+  height: 160px;
   animation: tipsy 3s ease-in-out infinite alternate;
+}
+
+.sticker-disc img,
+.sticker-drink img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(3px 3px 0 rgba(40, 16, 47, 0.18));
 }
 
 body.chaos {
