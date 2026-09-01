@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An interactive Oulipian poem machine.">
+  <title>A Night with Harry Brearley — Poem Machine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700;6..96,900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="butterfly butterfly-one" aria-hidden="true">🦋</div>
+  <div class="butterfly butterfly-two" aria-hidden="true">🦋</div>
+  <div class="butterfly butterfly-three" aria-hidden="true">🦋</div>
+  <div class="butterfly butterfly-four" aria-hidden="true">🦋</div>
+
+  <div class="sticker sticker-star" aria-hidden="true">✦</div>
+  <div class="sticker sticker-disc" aria-hidden="true">🪩</div>
+  <div class="sticker sticker-drink" aria-hidden="true">🍸</div>
+
+  <main>
+    <header class="hero">
+      <p class="kicker">A POEM MACHINE FOR BAD DECISIONS</p>
+      <h1>A Night with Harry Brearley,<br><em>The Inventor of Stainless Steel</em></h1>
+      <p class="instructions">
+        Shuffle the highlighted adjectives. Drag the nouns through a tiny dictionary.
+        Or surrender completely.
+      </p>
+    </header>
+
+    <section class="control-deck" aria-label="Poem controls">
+      <button class="control control-pink" id="shuffle-button" type="button">
+        <span aria-hidden="true">✧</span> Shuffle adjectives
+      </button>
+
+      <div class="slider-control">
+        <div class="slider-labels">
+          <label for="noun-slider">Noun displacement</label>
+          <output id="noun-output" for="noun-slider">N+0</output>
+        </div>
+        <input id="noun-slider" type="range" min="0" max="15" value="0" step="1">
+        <div class="slider-ends" aria-hidden="true"><span>original</span><span>unhinged</span></div>
+      </div>
+
+      <button class="control control-chaos" id="chaos-button" type="button" aria-pressed="false">
+        <span aria-hidden="true">⚡</span> Chaos mode
+      </button>
+
+      <button class="control control-reset" id="reset-button" type="button">
+        Reset
+      </button>
+    </section>
+
+    <p class="status" id="status" role="status" aria-live="polite">Original poem</p>
+
+    <article class="poem-card" id="poem-card">
+      <div class="poem" id="poem">
+        <p>
+          Harry’s watching BoJack on my <span class="noun" data-lemma="couch">couch</span> while I make
+          <span class="adjective">honey dijon</span> <span class="noun" data-lemma="chicken">chicken</span>.
+        </p>
+
+        <p>
+          He’s got his <span class="noun" data-lemma="shoe" data-number="plural">shoes</span> up on my coffee
+          <span class="noun" data-lemma="table">table</span>.
+        </p>
+
+        <p>
+          There’s nothing you can do about Harry. Back when we<br>
+          were <span class="adjective">broken</span> up, when we refused to speak to each other, I still<br>
+          saw him everywhere: in <span class="noun" data-lemma="pot" data-number="plural">pots</span>,
+          <span class="noun" data-lemma="pan" data-number="plural">pans</span>,
+          <span class="adjective">hypoallergenic</span> <span class="noun" data-lemma="jewelry" data-number="same">jewelry</span>,
+          <span class="adjective">solar</span> <span class="noun" data-lemma="panel" data-number="plural">panels</span>,<br>
+          even the <span class="adjective">upper</span> section of the Chrysler
+          <span class="noun" data-lemma="building">building</span>. He was the <span class="adjective">principal</span><br>
+          <span class="noun" data-lemma="dancer">dancer</span> of our
+          <span class="noun" data-lemma="life" data-number="plural">lives</span>. When I got
+          <span class="noun" data-lemma="surgery" data-number="same">surgery</span> on my
+          <span class="adjective">middle</span><br>
+          <span class="noun" data-lemma="finger">finger</span>, Harry was there in the
+          <span class="noun" data-lemma="needle" data-number="plural">needles</span> and
+          <span class="noun" data-lemma="forceps" data-number="same">forceps</span> and the
+          <span class="noun" data-lemma="bolt">bolt</span><br>
+          they screwed into my <span class="noun" data-lemma="knuckle">knuckle</span>. And beyond all that, even<br>
+          if I’d swapped all the <span class="noun" data-lemma="steel" data-number="same">steel</span> in the
+          <span class="noun" data-lemma="world">world</span> for titanium or aluminum<br>
+          or <span class="adjective">durable</span>
+          <span class="noun" data-lemma="plastic" data-number="plural">plastics</span> like polypropylene, it couldn’t change the
+          <span class="adjective">eternal</span><br>
+          fact that we shared the <span class="adjective">same</span>
+          <span class="noun" data-lemma="birthday">birthday</span>. Or that we both,<br>
+          unbeknownst to the other, tried to reserve Cowgirl Lounge<br>
+          for the <span class="adjective">very same</span> February
+          <span class="noun" data-lemma="night">night</span>. Or that we’d sent
+          <span class="adjective">near-identical</span> Partifuls<br>
+          to a <span class="adjective">near-identical</span>
+          <span class="noun" data-lemma="guest">guest</span>
+          <span class="noun" data-lemma="list">list</span>, that we’d planned to wear<br>
+          <span class="adjective">near-identical</span>
+          <span class="adjective">black</span>
+          <span class="adjective">long-sleeve</span>
+          <span class="adjective">square-neck</span> Skims
+          <span class="noun" data-lemma="shirt" data-number="plural">shirts</span> and play<br>
+          Big Thief <span class="noun" data-lemma="album" data-number="plural">albums</span> on aux. At that point, it was all over.
+        </p>
+
+        <p>
+          In front of our <span class="noun" data-lemma="family" data-number="same">family</span> and
+          <span class="noun" data-lemma="friend" data-number="plural">friends</span>, all the event
+          <span class="noun" data-lemma="staff" data-number="same">staff</span>, all the Partiful data
+          <span class="noun" data-lemma="agent" data-number="plural">agents</span>,<br>
+          we’d inadvertently proclaimed our
+          <span class="noun" data-lemma="sameness" data-number="same">sameness</span>, our twin-soulness, spit out<br>
+          the <span class="adjective">foolish</span> <span class="adjective">arbitrary</span> nature of our
+          <span class="noun" data-lemma="feud">feud</span> like
+          <span class="adjective">false</span>
+          <span class="noun" data-lemma="tooth" data-number="plural">teeth</span>.<br>
+          At that point, we had no <span class="noun" data-lemma="choice">choice</span> but to gum it up<br>
+          together.
+        </p>
+
+        <p>
+          To lay down our <span class="noun" data-lemma="weapon" data-number="plural">weapons</span> and grieve, to turn towards each other in
+          <span class="noun" data-lemma="sorrow" data-number="same">sorrow</span>, to<br>
+          metabolize that <span class="noun" data-lemma="sorrow" data-number="same">sorrow</span> into
+          <span class="noun" data-lemma="beauty" data-number="same">beauty</span> and
+          <span class="noun" data-lemma="truth" data-number="same">truth</span>. To conjoin our
+          <span class="noun" data-lemma="birthday">birthday</span>
+          <span class="noun" data-lemma="party" data-number="plural">parties</span>,<br>
+          spend a <span class="adjective">collective</span> $800 on
+          <span class="adjective">Texas</span>
+          <span class="noun" data-lemma="margarita" data-number="plural">margaritas</span>, to invite everyone’s<br>
+          <span class="noun" data-lemma="ex" data-number="plural">exes</span> and let them figure it out, let them metabolize each other,<br>
+          shepherd each other through the <span class="adjective">dark</span>
+          <span class="adjective">webby</span>
+          <span class="noun" data-lemma="undernetting" data-number="same">undernetting</span><br>
+          to that <span class="adjective">silver</span>
+          <span class="noun" data-lemma="light" data-number="same">light</span> focused by
+          <span class="noun" data-lemma="love" data-number="same">love</span>.
+        </p>
+      </div>
+    </article>
+
+    <footer>
+      <p><span class="legend adjective-swatch"></span> adjectives shuffle among themselves</p>
+      <p><span class="legend noun-swatch"></span> nouns travel through the mini dictionary</p>
+      <p class="credit">Built with HTML, CSS, JavaScript &amp; poor impulse control.</p>
+    </footer>
+  </main>
+</body>
+</html>
